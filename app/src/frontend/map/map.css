@@ -1,0 +1,36 @@
+.map-container {
+    position: absolute;
+    top: 76px; /* sync with header positioning */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-width: 320px;
+}
+@media (min-width: 990px) {
+    .map-container {
+        top: 0;
+        left: 470px;
+    }
+}
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+.leaflet-container .leaflet-control-zoom {
+    border: 1px solid #fff;
+    box-shadow: 0 0 1px 1px #222;
+}
+.leaflet-container .leaflet-control-attribution {
+    width: 100%;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.7);
+}
+.leaflet-grab {
+    cursor: crosshair;
+}
+@media (min-width: 990px){
+    /* Only show the "Click a building ..." notice for larger screens */
+    .map-notice {
+        display: block;
+    }
+}
