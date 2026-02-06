@@ -26,10 +26,6 @@ interface DisplayPreferencesContextState {
     conservationSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
     conservationSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
 
-    worldHeritageSites: LayerEnablementState;
-    worldHeritageSitesSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
-    worldHeritageSitesSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
-
     parcel: LayerEnablementState;
     parcelSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
     parcelSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -45,6 +41,42 @@ interface DisplayPreferencesContextState {
     historicMap: LayerEnablementState;
     historicMapSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
     historicMapSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    historicMapLeicestershire: LayerEnablementState;
+    historicMapLeicestershireSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    historicMapLeicestershireSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    aerialPhotosMap: LayerEnablementState;
+    aerialPhotosMapSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    aerialPhotosMapSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    historicalFootprints: LayerEnablementState;
+    historicalFootprintsSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    historicalFootprintsSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    historicalMapAndFootprintsWithoutFill: LayerEnablementState;
+    historicalMapAndFootprintsWithoutFillSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    historicalMapAndFootprintsWithoutFillSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    openStreetMap: LayerEnablementState;
+    openStreetMapSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    openStreetMapSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    regions: LayerEnablementState;
+    regionsSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    regionsSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    ceremonialCounties: LayerEnablementState;
+    ceremonialCountiesSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    ceremonialCountiesSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    motorways: LayerEnablementState;
+    motorwaysSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    motorwaysSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
+
+    greenbelt: LayerEnablementState;
+    greenbeltSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
+    greenbeltSwitchOnClick: React.MouseEventHandler<HTMLButtonElement>;
 
     editableBuildings: LayerEnablementState;
     editableBuildingsSwitch: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -87,10 +119,6 @@ export const DisplayPreferencesContext = createContext<DisplayPreferencesContext
     conservationSwitch: stub,
     conservationSwitchOnClick: undefined,
 
-    worldHeritageSites: undefined,
-    worldHeritageSitesSwitch: stub,
-    worldHeritageSitesSwitchOnClick: undefined,
-
     parcel: undefined,
     parcelSwitch: stub,
     parcelSwitchOnClick: undefined,
@@ -106,6 +134,42 @@ export const DisplayPreferencesContext = createContext<DisplayPreferencesContext
     historicMap: undefined,
     historicMapSwitch: stub,
     historicMapSwitchOnClick: undefined,
+
+    historicMapLeicestershire: undefined,
+    historicMapLeicestershireSwitch: stub,
+    historicMapLeicestershireSwitchOnClick: undefined,
+
+    aerialPhotosMap: undefined,
+    aerialPhotosMapSwitch: stub,
+    aerialPhotosMapSwitchOnClick: undefined,
+
+    historicalFootprints: undefined,
+    historicalFootprintsSwitch: stub,
+    historicalFootprintsSwitchOnClick: undefined,
+
+    historicalMapAndFootprintsWithoutFill: undefined,
+    historicalMapAndFootprintsWithoutFillSwitch: stub,
+    historicalMapAndFootprintsWithoutFillSwitchOnClick: undefined,
+
+    regions: undefined,
+    regionsSwitch: stub,
+    regionsSwitchOnClick: undefined,
+
+    ceremonialCounties: undefined,
+    ceremonialCountiesSwitch: stub,
+    ceremonialCountiesSwitchOnClick: undefined,
+
+    greenbelt: undefined,
+    greenbeltSwitch: stub,
+    greenbeltSwitchOnClick: undefined,
+    
+    motorways: undefined,
+    motorwaysSwitch: stub,
+    motorwaysSwitchOnClick: undefined,
+    
+    openStreetMap: undefined,
+    openStreetMapSwitch: stub,
+    openStreetMapSwitchOnClick: undefined,
 
     editableBuildings: undefined,
     editableBuildingsSwitch: stub,
@@ -130,9 +194,17 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
     const defaultBorough = 'enabled'
     const defaultParcel = 'disabled'
     const defaultConservation = 'disabled'
-    const defaultWorldHeritageSites = 'disabled'
     const defaultHistoricData = 'disabled'
     const defaultHistoricMap = 'disabled'
+    const defaultHistoricMapLeicestershire = 'disabled'
+    const defaultaerialPhotosMap = 'disabled'
+    const defaultHistoricalFootprints = 'disabled'
+    const defaultHistoricalMapAndFootprintsWithoutFill = 'disabled'
+    const defaultRegions = 'disabled'
+    const defaultCeremonialCounties = 'disabled'
+    const defaultGreenbelt = 'disabled'
+    const defaultMotorways = 'disabled'
+    const defaultOpenStreetMap = 'disabled'
     const defaultEditableBuildings = 'enabled'
     const defaultShowLayerSelection = 'disabled'
     const [vista, setVista] = useState<LayerEnablementState>(defaultVista);
@@ -142,9 +214,17 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
     const [borough, setBorough] = useState<LayerEnablementState>(defaultBorough);
     const [parcel, setParcel] = useState<LayerEnablementState>(defaultParcel);
     const [conservation, setConservation] = useState<LayerEnablementState>(defaultConservation);
-    const [worldHeritageSites, setWorldHeritageSites] = useState<LayerEnablementState>(defaultWorldHeritageSites);
     const [historicData, setHistoricData] = useState<LayerEnablementState>(defaultHistoricData);
     const [historicMap, setHistoricMap] = useState<LayerEnablementState>(defaultHistoricMap);
+    const [historicMapLeicestershire, setHistoricMapLeicestershire] = useState<LayerEnablementState>(defaultHistoricMapLeicestershire);
+    const [aerialPhotosMap, setaerialPhotosMap] = useState<LayerEnablementState>(defaultaerialPhotosMap);
+    const [historicalFootprints, setHistoricalFootprints] = useState<LayerEnablementState>(defaultHistoricalFootprints);
+    const [historicalMapAndFootprintsWithoutFill, setHistoricalMapAndFootprintsWithoutFill] = useState<LayerEnablementState>(defaultHistoricalMapAndFootprintsWithoutFill);
+    const [regions, setRegions] = useState<LayerEnablementState>(defaultRegions);
+    const [ceremonialCounties, setCeremonialCounties] = useState<LayerEnablementState>(defaultCeremonialCounties);
+    const [greenbelt, setGreenbelt] = useState<LayerEnablementState>(defaultGreenbelt);
+    const [motorways, setMotorways] = useState<LayerEnablementState>(defaultMotorways);
+    const [openStreetMap, setOpenStreetMapMap] = useState<LayerEnablementState>(defaultOpenStreetMap);
     const [editableBuildings, setEditableBuildings] = useState<LayerEnablementState>(defaultEditableBuildings);
     const [darkLightTheme, setDarkLightTheme] = useState<MapTheme>('night');
     const [showLayerSelection, setShowLayerSelection] = useState<LayerEnablementState>(defaultShowLayerSelection);
@@ -158,6 +238,7 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
 
     const resetLayersAndHideTheirList = useCallback(
         (e) => {
+            setOpenStreetMapMap(defaultOpenStreetMap);
             setVista(defaultVista);
             setFlood(defaultFlood);
             setCreative(defaultCreative);
@@ -165,9 +246,16 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
             setBorough(defaultBorough)
             setParcel(defaultParcel);
             setConservation(defaultConservation);
-            setWorldHeritageSites(defaultWorldHeritageSites);
             setHistoricData(defaultHistoricData);
             setHistoricMap(defaultHistoricMap);
+            setHistoricMapLeicestershire(defaultHistoricMapLeicestershire);
+            setaerialPhotosMap(defaultaerialPhotosMap);
+            setHistoricalFootprints(defaultHistoricalFootprints);
+            setHistoricalMapAndFootprintsWithoutFill(defaultHistoricalMapAndFootprintsWithoutFill);
+            setRegions(defaultRegions);
+            setCeremonialCounties(defaultCeremonialCounties);
+            setGreenbelt(defaultGreenbelt);
+            setMotorways(defaultMotorways);
             setEditableBuildings(defaultEditableBuildings)
             setShowLayerSelection(defaultShowLayerSelection); // reset layers + hiding this panel is integrated into one action
             //setDarkLightTheme('night'); // reset only layers
@@ -197,13 +285,37 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
         if(conservation != defaultConservation) {
             return true;
         }
-        if(worldHeritageSites != defaultWorldHeritageSites) {
-            return true;
-        }
         if(historicData != defaultHistoricData) {
             return true;
         }
         if(historicMap != defaultHistoricMap) {
+            return true;
+        }
+        if(historicMapLeicestershire != defaultHistoricMapLeicestershire) {
+            return true;
+        }
+        if(aerialPhotosMap != defaultaerialPhotosMap) {
+            return true;
+        }
+        if(historicalFootprints != defaultHistoricalFootprints) {
+            return true;
+        }
+        if(historicalMapAndFootprintsWithoutFill != defaultHistoricalMapAndFootprintsWithoutFill) {
+            return true;
+        }
+        if(regions != defaultRegions) {
+            return true;
+        }
+        if(ceremonialCounties != defaultCeremonialCounties) {
+            return true;
+        }
+        if(motorways != defaultMotorways) {
+            return true;
+        }
+        if(greenbelt != defaultGreenbelt) {
+            return true;
+        }
+        if(openStreetMap != defaultOpenStreetMap) {
             return true;
         }
         if(editableBuildings != defaultEditableBuildings) {
@@ -319,29 +431,17 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
         setConservation(newConservation);
     }
 
-    const worldHeritageSitesSwitch = useCallback(
-        (e) => {
-            flipWorldHeritageSites(e)
-        },
-        [worldHeritageSites],
-    )
-    const worldHeritageSitesSwitchOnClick = (e) => {
-        flipWorldHeritageSites(e)
-    }
-    function flipWorldHeritageSites(e) {
-        e.preventDefault();
-        const newWorldHeritageSites = (worldHeritageSites === 'enabled')? 'disabled' : 'enabled';
-        setWorldHeritageSites(newWorldHeritageSites);
-    }
-
     const historicDataSwitch = useCallback(
         (e) => {
             if (historicMap === 'enabled') {
-                fliphistoricMap(e);
+                flipHistoricMap(e);
+            }
+            if (historicalFootprints === 'enabled') {
+                flipHistoricFootprints(e);
             }
             flipHistoricData(e);
         },
-        [historicData, historicMap],
+        [historicData, historicMap, historicalFootprints],
     )
     const historicDataSwitchOnClick = (e) => {
         flipHistoricData(e)
@@ -357,17 +457,118 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
             if (historicData === 'enabled') {
                 flipHistoricData(e);
             }
-            fliphistoricMap(e);
+            if (historicalFootprints === 'enabled') {
+                flipHistoricFootprints(e);
+            }
+            flipHistoricMap(e);
         },
-        [historicMap, historicData],
+        [historicMap, historicData, historicalFootprints],
     )
     const historicMapSwitchOnClick = (e) => {
-        fliphistoricMap(e)
+        flipHistoricMap(e)
     }
-    function fliphistoricMap(e) {
+    function flipHistoricMap(e) {
         e.preventDefault();
         const newHistoric = (historicMap === 'enabled')? 'disabled' : 'enabled';
+        
         setHistoricMap(newHistoric);
+    }
+
+    const historicMapLeicestershireSwitch = useCallback(
+        (e) => {
+            if (historicData === 'enabled') {
+                flipHistoricData(e);
+            }
+            if (historicalFootprints === 'enabled') {
+                flipHistoricFootprints(e);
+            }
+            flipHistoricMapLeicestershire(e);
+        },
+        [historicMapLeicestershire, historicData, historicalFootprints],
+    )
+    const historicMapLeicestershireSwitchOnClick = (e) => {
+        flipHistoricMapLeicestershire(e)
+    }
+    function flipHistoricMapLeicestershire(e) {
+        e.preventDefault();
+        const newHistoricLeicestershire = (historicMapLeicestershire === 'enabled')? 'disabled' : 'enabled';
+        
+        setHistoricMapLeicestershire(newHistoricLeicestershire);
+    }
+
+    const aerialPhotosMapSwitch = useCallback(
+        (e) => {
+            flipaerialPhotosMap(e);
+        },
+        [aerialPhotosMap],
+    )
+    const aerialPhotosMapSwitchOnClick = (e) => {
+        flipaerialPhotosMap(e)
+    }
+    function flipaerialPhotosMap(e) {
+        e.preventDefault();
+        const newHistoric = (aerialPhotosMap === 'enabled')? 'disabled' : 'enabled';
+        setaerialPhotosMap(newHistoric);
+    }
+
+    const historicalFootprintsSwitch = useCallback(
+        (e) => {
+            if (historicMap === 'enabled') {
+                flipHistoricMap(e);
+            }
+            if (historicData === 'enabled') {
+                flipHistoricData(e);
+            }
+            flipHistoricFootprints(e)
+        },
+        [historicMap, historicData, historicalFootprints],
+    )
+    const historicalFootprintsSwitchOnClick = (e) => {
+        flipHistoricFootprints(e)
+    }
+    function flipHistoricFootprints(e) {
+        e.preventDefault();
+        const newFootprints = (historicalFootprints === 'enabled')? 'disabled' : 'enabled';
+        setHistoricalFootprints(newFootprints);
+    }
+
+    const historicalMapAndFootprintsWithoutFillSwitch = useCallback(
+        (e) => {
+            if (historicMap === 'enabled') {
+                flipHistoricMap(e);
+            }
+            if (historicData === 'enabled') {
+                flipHistoricData(e);
+            }
+            if (historicalFootprints === 'enabled') {
+                flipHistoricFootprints(e);
+            }
+            flipHistoricalMapAndFootprintsWithoutFill(e)
+        },
+        [historicMap, historicData, historicalFootprints],
+    )
+    const historicalMapAndFootprintsWithoutFillSwitchOnClick = (e) => {
+        flipHistoricalMapAndFootprintsWithoutFill(e)
+    }
+    function flipHistoricalMapAndFootprintsWithoutFill(e) {
+        e.preventDefault();
+        const newHistoricalMapMapAndFootprintsWithoutFill = (historicalMapAndFootprintsWithoutFill === 'enabled')? 'disabled' : 'enabled';
+        setHistoricalMapAndFootprintsWithoutFill(newHistoricalMapMapAndFootprintsWithoutFill);
+    }
+
+    const openStreetMapSwitch = useCallback(
+        (e) => {
+            flipOpenStreetMap(e);
+        },
+        [openStreetMap],
+    )
+    const openStreetMapSwitchOnClick = (e) => {
+        flipOpenStreetMap(e)
+    }
+    function flipOpenStreetMap(e) {
+        e.preventDefault();
+        const newOpenStreetMap = (openStreetMap === 'enabled')? 'disabled' : 'enabled';
+        setOpenStreetMapMap(newOpenStreetMap);
     }
 
     const editableBuildingsSwitch = useCallback(
@@ -383,6 +584,66 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
         e.preventDefault();
         const newValue = (editableBuildings === 'enabled')? 'disabled' : 'enabled';
         setEditableBuildings(newValue);
+    }
+
+    const regionsSwitch = useCallback(
+        (e) => {
+            flipRegions(e)
+        },
+        [regions],
+    )
+    const regionsSwitchOnClick = (e) => {
+        flipRegions(e)
+    }
+    function flipRegions(e) {
+        e.preventDefault();
+        const newRegions = (regions === 'enabled')? 'disabled' : 'enabled';
+        setRegions(newRegions);
+    }
+
+    const ceremonialCountiesSwitch = useCallback(
+        (e) => {
+            flipCeremonialCounties(e)
+        },
+        [ceremonialCounties],
+    )
+    const ceremonialCountiesSwitchOnClick = (e) => {
+        flipCeremonialCounties(e)
+    }
+    function flipCeremonialCounties(e) {
+        e.preventDefault();
+        const newCeremonialCounties = (ceremonialCounties === 'enabled')? 'disabled' : 'enabled';
+        setCeremonialCounties(newCeremonialCounties);
+    }
+
+    const motorwaysSwitch = useCallback(
+            (e) => {
+                flipMotorways(e)
+            },
+            [motorways],
+        )
+    const motorwaysSwitchOnClick = (e) => {
+        flipMotorways(e)
+    }
+    function flipMotorways(e) {
+        e.preventDefault();
+        const newMotorways = (motorways === 'enabled')? 'disabled' : 'enabled';
+        setMotorways(newMotorways);
+    }
+
+    const greenbeltSwitch = useCallback(
+        (e) => {
+            flipGreenbelt(e)
+        },
+        [greenbelt],
+    )
+    const greenbeltSwitchOnClick = (e) => {
+        flipGreenbelt(e)
+    }
+    function flipGreenbelt(e) {
+        e.preventDefault();
+        const newGreenbelt = (greenbelt === 'enabled')? 'disabled' : 'enabled';
+        setGreenbelt(newGreenbelt);
     }
 
     const darkLightThemeSwitch = useCallback(
@@ -436,9 +697,6 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
             conservation,
             conservationSwitch,
             conservationSwitchOnClick,
-            worldHeritageSites,
-            worldHeritageSitesSwitch,
-            worldHeritageSitesSwitchOnClick,
             parcel,
             parcelSwitch,
             parcelSwitchOnClick,
@@ -454,6 +712,42 @@ export const DisplayPreferencesProvider: React.FC<{}> = ({children}) => {
             historicMap,
             historicMapSwitch,
             historicMapSwitchOnClick,
+
+            historicMapLeicestershire,
+            historicMapLeicestershireSwitch,
+            historicMapLeicestershireSwitchOnClick,
+
+            aerialPhotosMap,
+            aerialPhotosMapSwitch,
+            aerialPhotosMapSwitchOnClick,
+
+            historicalFootprints,
+            historicalFootprintsSwitch,
+            historicalFootprintsSwitchOnClick,
+
+            historicalMapAndFootprintsWithoutFill,
+            historicalMapAndFootprintsWithoutFillSwitch,
+            historicalMapAndFootprintsWithoutFillSwitchOnClick,
+
+            regions,
+            regionsSwitch,
+            regionsSwitchOnClick,
+
+            ceremonialCounties,
+            ceremonialCountiesSwitch,
+            ceremonialCountiesSwitchOnClick,
+
+            motorways,
+            motorwaysSwitch,
+            motorwaysSwitchOnClick,
+            
+            greenbelt,
+            greenbeltSwitch,
+            greenbeltSwitchOnClick,
+
+            openStreetMap,
+            openStreetMapSwitch,
+            openStreetMapSwitchOnClick,
 
             editableBuildings,
             editableBuildingsSwitch,

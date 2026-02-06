@@ -403,6 +403,12 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
         tooltip: null,
         example: ["", "", ""],
     },
+    building_footprint_issues: {
+        category: Category.Location,
+        title: "Please lets us know of any inaccuracies here",
+        tooltip: "The most significant problem should be first",
+        example: ["", ""],
+    },
     
     /**
      * UPRNs is not part of the buildings table, but the string fields 
@@ -577,6 +583,42 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
         tooltip: "Best estimate for when the front/facade of the building was constructed.",
         example: 1900,
     },
+    date_source: {
+        category: Category.AgeHistory,
+        title: "Historical source type",
+        tooltip: "Specific historical data source type for the building dates above.",
+        items: [
+            "Official conservation area appraisals",
+            "Pevsner Guides",
+            "Victoria County History",
+            "Survey of London",
+            "Local history publication (book/record)",
+            "Other publication",
+            "Local history website",
+            "Other website",
+            "National Heritage List for England",
+            "Other database or gazetteer",
+            "Historical map",
+            "Film/Video",
+            "Other archive document",
+            "Expert knowledge of building",
+            "Expert estimate from image",
+            "Other"
+        ],
+        example: "",
+    },
+    date_source_detail: {
+        category: Category.AgeHistory,
+        title: "Source details",
+        tooltip: "References for date source (max 500 characters)",
+        example: "",
+    },
+    date_link: {
+        category: Category.AgeHistory,
+        title: "Historical source link(s)",
+        tooltip: "URL(s) for historical data source(s) - Historical data source(s)",
+        example: ["", "", ""],
+    },
     date_source_type: {
         category: Category.AgeHistory,
         title: "Source type",
@@ -586,8 +628,8 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
     },
     date_source_links: {
         category: Category.AgeHistory,
-        title: "Alternative Source link(s)",
-        tooltip: null,
+        title: "Source link(s)",
+        tooltip: "URL(s) for historical data source(s) - Alternative data source(s)",
         example: ["", "", ""],
     },
     size_storeys_core: {
@@ -626,32 +668,6 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
         title: "Height to apex (m)",
         example: 100.5,
         tooltip: "i.e. the highest part of the roof (in meters).",
-    },
-    construction_material_window_frame: {
-        category: Category.ConstructionDesign,
-        title: "What is the material used for most of the window frames?",
-        tooltip: null,
-        example: "Wood",
-        items: [
-            "Wood",
-            "Metal",
-            "Plastic",
-            "Other",
-            "No windows"
-        ]
-    },
-    construction_material_window_frame_source_type: {
-        category: Category.ConstructionDesign,
-        title: "Source type",
-        tooltip: null,
-        example: "",
-        items: commonSourceTypes
-    },
-    construction_material_window_frame_source_links: {
-        category: Category.ConstructionDesign,
-        title: "Source links",
-        tooltip: null,
-        example: ["", "", ""],
     },
     size_height_apex_source_type: {
         category: Category.EnergyPerformance,
@@ -1126,28 +1142,15 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
         tooltip: "Energy Performance Certificate (EPC) Any premises sold or rented is required to have an EPC to show how energy efficient it is. Only buildings rate grade E or higher may be rented",
         example: "",
     },
-    sust_aggregate_estimate_epc_source_type: {
-        category: Category.EnergyPerformance,
+    sust_energy_rating_source_type: {
+        category: Category.WaterGreenInfrastructure,
         title: "Source type",
         tooltip: null,
         example: "",
         items: commonSourceTypes
     },
-    sust_aggregate_estimate_epc_source_link: {
-        category: Category.EnergyPerformance,
-        title: "Source link",
-        tooltip: null,
-        example: "",
-    },
-    sust_dec_source_type: {
-        category: Category.EnergyPerformance,
-        title: "Source type",
-        tooltip: null,
-        example: "",
-        items: commonSourceTypes
-    },
-    sust_dec_source_link: {
-        category: Category.EnergyPerformance,
+    sust_energy_rating_source_link: {
+        category: Category.WaterGreenInfrastructure,
         title: "Source link",
         tooltip: null,
         example: "",
@@ -1311,8 +1314,8 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
     },
     planning_world_heritage_site: {
         category: Category.UrbanInfrastructure,
-        title: "Is the building part of a World Heritage Site?",
-        tooltip: "Is the building part of a UNESCO <a href=\"https://www.unesco.org/en\" target=\"_blank\">World Heritage Site</a>",
+        title: "Is the building on a World Heritage Site?",
+        tooltip: "Is the building on a UNESCO <a href=\"https://www.unesco.org/en\" target=\"_blank\">World Heritage Site</a>",
         example: true,
     },
     planning_world_list_id: {
@@ -1433,25 +1436,62 @@ export const dataFields = { /* eslint-disable @typescript-eslint/camelcase */
     
 
     is_domestic: {
-        category: Category.EnergyPerformance,
-        title: "Is the building residential, non-residential or mixed? (automatically generated from Specific Land Use/s)",
+        category: Category.LandUse,
+        title: "What cluster does the building belong to?",
         tooltip: null,
-        example: "mixed domestic/non-domestic",
+        example: "cluster_1",
         items: [
-            "Yes",
-            "No",
-            "Mixed domestic/non-domestic"
+            	"commercial_2",
+		"commercial_5",
+		"commercial_6",
+		"commercial_3",
+		"commercial_0",
+		"commercial_4",
+		"commercial_1",
+		"cultural_1",
+		"cultural_0",
+		"cultural_2",
+		"entertainment_venues_0",
+		"entertainment_venues_1",
+		"healthcare_and_charity_0",
+		"healthcare_and_charity_2",
+		"healthcare_and_charity_1",
+		"industrial_1",
+		"industrial_0",
+		"industrial_2",
+		"leisure_and_hospitality_0",
+		"leisure_and_hospitality_1",
+		"leisure_and_hospitality_2",
+		"offices_2",
+		"offices_0",
+		"offices_1",
+		"residential_0",
+		"residential_4",
+		"residential_2",
+		"residential_3",
+		"residential_1",
+		"singular_building_0",
+		"singular_building_1",
+		"sports_facilities_1",
+		"sports_facilities_0",
+		"sports_facilities_2",
+		"urbanization_land_1",
+		"urbanization_land_0",
+		"warehouse_parking_2",
+		"warehouse_parking_0",
+		"warehouse_parking_1"
+
         ]
     },
     is_domestic_source: {
-        category: Category.EnergyPerformance,
+        category: Category.LandUse,
         title: "Source type",
         tooltip: null,
         example: "",
         items: commonSourceTypes
     },
     is_domestic_links: {
-        category: Category.EnergyPerformance,
+        category: Category.LandUse,
         title: "Source links",
         tooltip: null,
         example: ["", "", ""],

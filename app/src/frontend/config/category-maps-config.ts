@@ -114,7 +114,7 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                     { color: "#f5d96b", text: "Brick" },
                     { color: "#beffe8", text: "Steel" },
                     { color: "#fca89d", text: "Reinforced Concrete" },
-                    { color: "#8fc3a0", text: "Other Metal" },
+                    { color: "#5c8970", text: "Other Metal" },
                     { color: "#96613b", text: "Other Natural Material" },
                     { color: "#c48a85", text: "Other Man-Made Material" }
                 ]
@@ -172,22 +172,9 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                     { color: "#f5d96b", text: "Brick" },
                     { color: "#beffe8", text: "Steel" },
                     { color: "#fca89d", text: "Reinforced Concrete" },
-                    { color: "#8fc3a0", text: "Other Metal" },
+                    { color: "#5c8970", text: "Other Metal" },
                     { color: "#96613b", text: "Other Natural Material" },
                     { color: "#c48a85", text: "Other Man-Made Material" }
-                ]
-            },
-        },
-        {
-            mapStyle: 'construction_material_window_frame',
-            legend: {
-                title: 'Window frame material',
-                elements: [
-                    { color: "#b5a859", text: "Wood" },
-                    { color: "#8fc3a0", text: "Metal" },
-                    { color: "#ff3939", text: "Plastic" },
-                    { color: "#8080ff", text: "Other" },
-                    { color: "#ffffff", text: "No windows" }
                 ]
             },
         },
@@ -228,11 +215,10 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
     ],
     [Category.EnergyPerformance]: [
         {
-            mapStyle: 'sust_aggregate_estimate_epc',
+            mapStyle: 'sust_dec',
             legend: {
-                title: 'Energy rating (residential)',
-                description: 'Residential energy rating (EPC Rating)',
-                disclaimer: 'This map shows official 2025 EPC data, required for new, sold and rented buildings. Please note EPC ratings may be out-of-date, as retrofit may have occurred since certification.',
+                title: 'Energy rating (DEC)',
+                description: 'Non-domestic energy rating (DEC Rating)',
                 elements: [
                     { color: "#007f3d", text: 'A' },
                     { color: "#2c9f29", text: 'B' },
@@ -241,15 +227,14 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                     { color: "#f7af1d", text: 'E' },
                     { color: "#ed6823", text: 'F' },
                     { color: "#e31d23", text: 'G' },
-                    { color: "#909090", text: 'No EPC identified or non-residential.' },
                 ]
             },
         },
         {
-            mapStyle: 'sust_dec',
+            mapStyle: 'sust_aggregate_estimate_epc',
             legend: {
-                title: 'Energy rating (non-residential)',
-                description: 'Non-residential energy rating (DEC Rating)',
+                title: 'Energy rating (EPC)',
+                description: 'Domestic energy rating (EPC Rating)',
                 elements: [
                     { color: "#007f3d", text: 'A' },
                     { color: "#2c9f29", text: 'B' },
@@ -280,7 +265,7 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
             mapStyle: 'planning_applications_status_all',
             legend: {
                 title: 'All planning applications available from GLA (official data)',
-                disclaimer: 'This map shows official data available from the GLA Planning London Datahub. What you are looking at is mainly applications from 2019 onwards.',
+                disclaimer: 'The map shows official data available from the GLA Planning London Datahub. What you are looking at is mainly applications from 2019 onwards.',
                 elements: [
                     { color: '#a040a0', text: 'Submitted, awaiting decision' },
                     { color: '#fff200', text: 'Appeal In Progress' },
@@ -295,7 +280,7 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
             mapStyle: 'planning_applications_status_recent',
             legend: {
                 title: 'The last 12 months - planning applications submissions/decisions (official data)',
-                disclaimer: 'This map shows applications where the submission or decision data falls within the last 12 months.',
+                disclaimer: 'The map shows applications where the submission or decision data falls within the last 12 months.',
                 elements: [
                     { color: '#a040a0', text: 'Submitted, awaiting decision' },
                     { color: '#fff200', text: 'Appeal In Progress' },
@@ -310,7 +295,7 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
             mapStyle: 'planning_applications_status_very_recent',
             legend: {
                 title: 'Last 30 days - planning applications submissions/decisions (official data)',
-                disclaimer: 'This map shows applications where the submission or decision data falls within last 30 days.',
+                disclaimer: 'The map shows applications where the submission or decision data falls within last 30 days.',
                 elements: [
                     { color: '#a040a0', text: 'Submitted, awaiting decision' },
                     { color: '#fff200', text: 'Appeal In Progress' },
@@ -349,18 +334,8 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                     { color: '#ffbea1', text: 'Grade II Listed'},
                     { color: '#85ffd4', text: 'Heritage at Risk'},
                     { color: '#858ed4', text: 'Locally Listed'},
-                    { color: '#0bbf12', text: 'In World Heritage Site'},
+                    { color: '#858eff', text: 'In World Heritage Site'},
                     { color: '#8500d4', text: 'In Archaeological Priority Area'},
-                ]
-            },
-        },
-        {
-            mapStyle: 'planning_world_heritage_buildings',
-            legend: {
-                title: 'Buildings in World Heritage Sites (official and crowdsourced data)',
-                disclaimer: 'All data relating to designated buildings should be checked against the National Heritage List for England and local authority websites. Designation data is currently incomplete.',
-                elements: [
-                    { color: '#0bbf12', text: 'In World Heritage Site'},
                 ]
             },
         },
@@ -394,7 +369,22 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                 { color: '#bae4bc', text: '<20%' }
             ]
         },
-    }],
+    },
+    {
+        mapStyle: 'building_footprint_issues',
+        legend: {
+            title: 'Building footprint issues',
+            description: 'Please lets us know of any inaccuracies here',
+            elements: [
+                { color: '#f699cd', text: 'Should be detached from adjacent polygon.' },
+                { color: '#ff0000', text: 'Should be split into two or more buildings.' },
+                { color: '#00ff00', text: 'Remove thin spikes.' },
+                { color: '#08e8de', text: 'Adjacent building is missing.' },
+                { color: '#ed7014', text: 'Two or more buildings merged in one polygon.' },
+            ]
+        },
+    },
+    ],
     [Category.Community]: [
         /*
         {
@@ -622,25 +612,6 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
                 ]
             }
         },
-        /*{
-            mapStyle: 'typology_style_period',
-            legend: {
-                title: 'Architectural style',
-                elements: [
-                    { color: '#FFF739', text: '43AD-410 (Roman)' },
-                    { color: '#C5BD00', text: '410-1485 (Medieval)' },
-                    { color: '#FF9A39', text: '1485-1603 (Tudor)' },
-                    { color: '#C56000', text: '1603-1714 (Stuart)' },
-                    { color: '#EA8072', text: '1714-1837 (Georgian)' },
-                    { color: '#A71200', text: '1837-1901 (Victorian)' },
-                    { color: '#A272D4', text: '1901-1914 (Edwardian)' },
-                    { color: '#3988C5', text: '1914-1945 (WWI-WWII)' },
-                    { color: '#5ADFA2', text: '1946-1979 (Post war)' },
-                    { color: '#C2F47A', text: '1980-1999 (Late C20)' },
-                    { color: '#6FB40A', text: '2000-2025 (Early C21)' },
-                ]
-            }
-        },*/
         {
             mapStyle: 'typology_dynamic_classification',
             legend: {
@@ -657,21 +628,21 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
             legend: {
                 title: 'Original Land Use',
                 elements: [
-                    { color: '#e5050d', text: 'Mixed Use' },
+                    { color: '#e5050d', text: 'Entertainment_venues' },
                     { subtitle: 'Single use:'},
                     { color: '#252aa6', text: 'Residential (unverified)' },
                     { color: '#7025a6', text: 'Residential (verified)' },
-                    { color: '#ff8c00', text: 'Retail' },
-                    { color: '#f5f58f', text: 'Industry & Business' },
-                    { color: '#fa667d', text: 'Community Services' },
-                    { color: '#ffbfbf', text: 'Recreation & Leisure' },
-                    { color: '#b3de69', text: 'Transport' },
-                    { color: '#cccccc', text: 'Utilities & Infrastructure' },
-                    { color: '#898944', text: 'Defence' },
-                    { color: '#73ccd1', text: 'Agriculture' },
+                    { color: '#ff8c00', text: 'Commercial' },
+                    { color: '#f5f58f', text: 'Urbanization_land' },
+                    { color: '#fa667d', text: 'Offices' },
+                    { color: '#ffbfbf', text: 'Warehouse_Parking' },
+                    { color: '#b3de69', text: 'Industrial' },
+                    { color: '#cccccc', text: 'Leisure_and_Hospitality' },
+                    { color: '#898944', text: 'Cultural' },
+                    { color: '#73ccd1', text: 'Healthcare_and_Charity' },
                     { color: '#45cce3', text: 'Minerals' },
-                    { color: '#ffffff', text: 'Vacant & Derelict' },
-                    { color: '#6c6f8e', text: 'Unclassified, presumed non-residential' }
+                    { color: '#ffffff', text: 'Singular building' },
+                    { color: '#6c6f8e', text: 'Sports_facilities' }
                 ]
             },
         },
@@ -754,33 +725,93 @@ export const categoryMapsConfig: {[key in Category]: CategoryMapDefinition[]} = 
             legend: {
                 title: 'Land Use',
                 elements: [
-                    { color: '#e5050d', text: 'Mixed Use' },
+                    { color: '#e5050d', text: 'Entertainment_venues' },
                     { subtitle: 'Single use:'},
                     { color: '#252aa6', text: 'Residential (unverified)' },
                     { color: '#7025a6', text: 'Residential (verified)' },
-                    { color: '#ff8c00', text: 'Retail' },
-                    { color: '#f5f58f', text: 'Industry & Business' },
-                    { color: '#fa667d', text: 'Community Services' },
-                    { color: '#ffbfbf', text: 'Recreation & Leisure' },
-                    { color: '#b3de69', text: 'Transport' },
-                    { color: '#cccccc', text: 'Utilities & Infrastructure' },
-                    { color: '#898944', text: 'Defence' },
-                    { color: '#73ccd1', text: 'Agriculture' },
+                    { color: '#ff8c00', text: 'Commercial' },
+                    { color: '#f5f58f', text: 'Urbanization_land' },
+                    { color: '#fa667d', text: 'Offices' },
+                    { color: '#ffbfbf', text: 'Warehouse_Parking' },
+                    { color: '#b3de69', text: 'Industrial' },
+                    { color: '#cccccc', text: 'Leisure_and_Hospitality' },
+                    { color: '#898944', text: 'Cultural' },
+                    { color: '#73ccd1', text: 'Healthcare_and_Charity' },
                     { color: '#45cce3', text: 'Minerals' },
-                    { color: '#ffffff', text: 'Vacant & Derelict' },
-                    { color: '#6c6f8e', text: 'Unclassified, presumed non-residential' }
+                    { color: '#ffffff', text: 'Singular building' },
+                    { color: '#6c6f8e', text: 'Sports_facilities' }
                 ]
             },
         },
         {
             mapStyle: 'is_domestic',
             legend: {
-                title: 'Residential building',
+                title: 'Clusters',
                 elements: [
-                    { color: '#f7ec25', text: 'Residential' },
-                    { color: '#fc9b2a', text: 'Mixed' },
-                    { color: '#ff2121', text: 'Non-residential' },
-                ]
+		    // --- Commercial ---
+		    { color: '#E65100', text: 'commercial_2' },
+		    { color: '#F57C00', text: 'commercial_5' },
+		    { color: '#FB8C00', text: 'commercial_6' },
+		    { color: '#FF6F00', text: 'commercial_3' },
+		    { color: '#FFB300', text: 'commercial_0' },
+		    { color: '#FFA726', text: 'commercial_4' },
+		    { color: '#FF8C00', text: 'commercial_1' },
+
+		    // --- Cultural ---
+		    { color: '#AB47BC', text: 'cultural_1' },
+		    { color: '#8E24AA', text: 'cultural_0' },
+		    { color: '#CE93D8', text: 'cultural_2' },
+
+		    // --- Entertainment Venues ---
+		    { color: '#3949AB', text: 'entertainment_venues_0' },
+		    { color: '#5C6BC0', text: 'entertainment_venues_1' },
+
+		    // --- Healthcare and Charity ---
+		    { color: '#00897B', text: 'healthcare_and_charity_0' },
+		    { color: '#80CBC4', text: 'healthcare_and_charity_2' },
+		    { color: '#26A69A', text: 'healthcare_and_charity_1' },
+
+		    // --- Industrial ---
+		    { color: '#8D6E63', text: 'industrial_1' },
+		    { color: '#6D4C41', text: 'industrial_0' },
+		    { color: '#A1887F', text: 'industrial_2' },
+
+		    // --- Leisure and Hospitality ---
+		    { color: '#FF7043', text: 'leisure_and_hospitality_0' },
+		    { color: '#F4511E', text: 'leisure_and_hospitality_2' },
+		    { color: '#FFAB91', text: 'leisure_and_hospitality_1' },
+
+		    // --- Offices ---
+		    { color: '#90CAF9', text: 'offices_2' },
+		    { color: '#1E88E5', text: 'offices_0' },
+		    { color: '#42A5F5', text: 'offices_1' },
+
+		    // --- Residential ---
+		    { color: '#43A047', text: 'residential_0' },
+		    { color: '#C8E6C9', text: 'residential_4' },
+		    { color: '#81C784', text: 'residential_2' },
+		    { color: '#A5D6A7', text: 'residential_3' },
+		    { color: '#66BB6A', text: 'residential_1' },
+
+		    // --- Singular Buildings ---
+		    { color: '#F06292', text: 'singular_building_0' },
+		    { color: '#EC407A', text: 'singular_building_1' },
+
+		    // --- Sports Facilities ---
+		    { color: '#00ACC1', text: 'sports_facilities_1' },
+		    { color: '#26C6DA', text: 'sports_facilities_0' },
+		    { color: '#4DD0E1', text: 'sports_facilities_2' },
+
+		    // --- Urbanization Land ---
+		    { color: '#CDDC39', text: 'urbanization_land_1' },
+		    { color: '#9E9D24', text: 'urbanization_land_0' },
+
+		    // --- Warehouse Parking ---
+		    { color: '#BDBDBD', text: 'warehouse_parking_2' },
+		    { color: '#757575', text: 'warehouse_parking_0' },
+		    { color: '#9E9E9E', text: 'warehouse_parking_1' },
+		]
+
             }
         }
     ],

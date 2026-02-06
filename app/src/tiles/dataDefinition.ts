@@ -162,14 +162,6 @@ const LAYER_QUERIES = {
             buildings
         WHERE
             construction_roof_covering IS NOT NULL`,
-    construction_material_window_frame: `
-        SELECT
-            geometry_id,
-            construction_material_window_frame
-        FROM
-            buildings
-        WHERE
-            construction_material_window_frame IS NOT NULL`,
     location: `
         SELECT blds_with_data.* 
         FROM (
@@ -191,6 +183,19 @@ const LAYER_QUERIES = {
                     buildings
             ) AS blds_with_data
         WHERE blds_with_data.location_info_count > 0`,
+    building_footprint_issues: `
+        SELECT blds_with_data.* 
+            FROM (
+                SELECT 
+                    geometry_id,
+                    CASE
+                        WHEN building_footprint_issues IS NULL OR array_length(building_footprint_issues, 1) = 0 THEN NULL
+                        ELSE building_footprint_issues[1]
+                    END AS building_footprint_issues
+                FROM buildings
+                WHERE
+                    building_footprint_issues IS NOT NULL
+            ) AS blds_with_data`,
     team: `
         SELECT blds_with_data.* 
         FROM (
@@ -469,19 +474,6 @@ const LAYER_QUERIES = {
             OR planning_heritage_at_risk_url <> ''
             OR planning_in_apa_url <> ''
             `,
-    planning_world_heritage_buildings: `
-        SELECT
-            geometry_id,
-            (
-                CASE
-                    WHEN planning_world_list_id IS NOT NULL THEN 'In World Heritage Site'
-                    ELSE 'None'
-                END
-            ) AS listing_type
-        FROM buildings
-        WHERE
-            planning_world_list_id IS NOT NULL
-            `,
     team_known_designer: `
             SELECT
                 geometry_id,
@@ -564,10 +556,23 @@ const LAYER_QUERIES = {
     typology_style_period: `
         SELECT
             geometry_id,
-            typology_style_period
+            CASE
+                WHEN date_year >= 43 AND date_year < 410 THEN '43AD-410 (Roman)'
+                WHEN date_year >= 410 AND date_year < 1485 THEN '410-1485 (Medieval)'
+                WHEN date_year >= 1485 AND date_year < 1603 THEN '1485-1603 (Tudor)'
+                WHEN date_year >= 1603 AND date_year < 1714 THEN '1603-1714 (Stuart)'
+                WHEN date_year >= 1714 AND date_year < 1837 THEN '1714-1837 (Georgian)'
+                WHEN date_year >= 1837 AND date_year < 1901 THEN '1837-1901 (Victorian)'
+                WHEN date_year >= 1901 AND date_year < 1914 THEN '1901-1914 (Edwardian)'
+                WHEN date_year >= 1914 AND date_year <= 1945 THEN '1914-1945 (WWI-WWII)'
+                WHEN date_year >= 1946 AND date_year <= 1979 THEN '1946-1979 (Post war)'
+                WHEN date_year >= 1980 AND date_year <= 1999 THEN '1980-1999 (Late 20th Century)'
+                WHEN date_year >= 2000 AND date_year <= 2025 THEN '2000-2025 (Early 21st Century)'
+                WHEN typology_style_period IS NOT NULL THEN  typology_style_period
+            END AS typology_style_period
         FROM
             buildings
-        WHERE typology_style_period IS NOT NULL`,
+        WHERE typology_style_period IS NOT NULL OR (date_year >= 43 AND date_year <= 2025)`,
     typology_dynamic_classification: `
         SELECT
             geometry_id,
@@ -615,7 +620,8 @@ const LAYER_QUERIES = {
             geometry_id,
             sust_aggregate_estimate_epc::text AS sust_aggregate_estimate_epc
         FROM
-            buildings`,
+            buildings
+        WHERE sust_aggregate_estimate_epc IS NOT NULL`,
     context_walkability_index: `
         SELECT
             geometry_id,

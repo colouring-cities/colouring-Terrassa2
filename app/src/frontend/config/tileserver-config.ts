@@ -17,8 +17,8 @@ export type BuildingMapTileset =
     'construction_foundation' |
     'construction_roof_shape' |
     'construction_roof_covering' |
-    'construction_material_window_frame' |
     'location' |
+    "building_footprint_issues" |
     'is_domestic' |
     'likes' |
     'typology_likes' |
@@ -37,7 +37,6 @@ export type BuildingMapTileset =
     'planning_applications_status_recent' |
     'planning_applications_status_very_recent' |
     'planning_combined' |
-    'planning_world_heritage_buildings' |
     'sust_dec' |
     'building_attachment_form' |
     'landuse' |

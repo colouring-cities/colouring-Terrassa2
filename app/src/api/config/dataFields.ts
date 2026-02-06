@@ -131,6 +131,13 @@ export const buildingAttributesConfig = valueType<DataFieldConfig>()({ /* eslint
         edit: true,
         verify: true
     },
+    building_footprint_issues : {
+        edit: true,
+        verify: true
+    },
+    building_footprint_issues_verified: {
+        edit: true,
+    },
     date_year: {
         edit: true,
         verify: true,
@@ -148,6 +155,10 @@ export const buildingAttributesConfig = valueType<DataFieldConfig>()({ /* eslint
         verify: true,
     },
     date_source_type: {
+        edit: true,
+        verify: true,
+    },
+    date_source: {
         edit: true,
         verify: true,
     },
@@ -276,18 +287,6 @@ export const buildingAttributesConfig = valueType<DataFieldConfig>()({ /* eslint
         verify: true,
     },
     size_parcel_geometry_source_links: {
-        edit: true,
-        verify: true,
-    },
-    construction_material_window_frame: {
-        edit: true,
-        verify: true,
-    },
-    construction_material_window_frame_source_type: {
-        edit: true,
-        verify: true,
-    },
-    construction_material_window_frame_source_links: {
         edit: true,
         verify: true,
     },
@@ -575,19 +574,11 @@ export const buildingAttributesConfig = valueType<DataFieldConfig>()({ /* eslint
     sust_aggregate_estimate_epc: {
         edit: true,
     },
-    sust_aggregate_estimate_epc_source_type: {
+    sust_energy_rating_source_type: {
         edit: true,
         verify: true
     },
-    sust_aggregate_estimate_epc_source_link: {
-        edit: true,
-        verify: true
-    },
-    sust_dec_source_type: {
-        edit: true,
-        verify: true
-    },
-    sust_dec_source_link: {
+    sust_energy_rating_source_link: {
         edit: true,
         verify: true
     },
